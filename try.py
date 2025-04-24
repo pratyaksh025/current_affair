@@ -1,6 +1,5 @@
 from datetime import date
 import streamlit as st
-import os
 
 l1 = ['Abhishek kumar', 'Altaf Hussain', 'Anoop Kumar verma', 'Gaurav Kashya', 'Jay Vardha',
     'Kashish Pandey', 'Neha Gautam', 'Pratyaksh Yadav', 'Prem Mohan', 'Priya Singh',
@@ -10,7 +9,11 @@ l2 = list(reversed(l1))
 
 record_file = 'records.txt'
 
-if not os.path.exists(record_file):
+
+try:
+    with open(record_file, 'r') as f:
+        pass
+except FileNotFoundError:
     with open(record_file, 'w') as f:
         f.write("date,Name1,status1,Name2,status2\n")
 
