@@ -1,7 +1,7 @@
 from datetime import date
 import streamlit as st
 
-l1 = ['Abhishek kumar', 'Altaf Hussain', 'Anoop Kumar verma', 'Gaurav Kashya', 'Jay Vardha',
+l1 = ['Abhishek kumar', 'Altaf Hussain', 'Anoop Kumar verma', 'Gaurav Kashya', 'Jay Vardhan',
     'Kashish Pandey', 'Neha Gautam', 'Pratyaksh Yadav', 'Prem Mohan', 'Priya Singh',
     'Ranjeet Kumar', 'Sandeep Balmiki', 'Saumya', 'Shreya Singh', 'Sonam Pal']
 
@@ -73,7 +73,7 @@ def get_one_name(l, index_key, name_key, role_key, list_id):
 
         break
 
-# Sidebar for options
+
 st.sidebar.title("Options")
 option = st.sidebar.radio("Choose an action:", ["Make Pair", "Manually Add Pair", "Clear All Pairs", "View All Pairs"])
 
