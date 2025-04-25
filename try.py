@@ -75,7 +75,7 @@ def get_one_name(l, index_key, name_key, role_key, list_id):
 
 # Sidebar for options
 st.sidebar.title("Options")
-option = st.sidebar.radio("Choose an action:", ["Make Pair", "Manually Add Pair", "Clear All Pairs"])
+option = st.sidebar.radio("Choose an action:", ["Make Pair", "Manually Add Pair", "Clear All Pairs", "View All Pairs"])
 
 if option == "Make Pair":
     st.title("Available Users Pairing")
@@ -116,3 +116,18 @@ elif option == "Clear All Pairs":
         with open(record_file, 'w') as file:
             file.write("date,Name1,status1,Name2,status2\n")
         st.success("✅ All pairs cleared.")
+
+elif option == "View All Pairs":
+    st.title("All Paired Users")
+    try:
+        with open(record_file, 'r') as file:
+            lines = file.readlines()
+            if len(lines) > 1:
+                st.write("### Paired Records:")
+                for line in lines[1:]:
+                    date_, name1, status1, name2, status2 = line.strip().split(',')
+                    st.write(f"- **{date_}**: {name1} ({status1}) and {name2} ({status2})")
+            else:
+                st.info("No pairs found.")
+    except FileNotFoundError:
+        st.info("No records file found.")
