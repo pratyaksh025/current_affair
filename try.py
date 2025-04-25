@@ -1,7 +1,7 @@
 from datetime import date
 import streamlit as st
 
-l1 = ['Abhishek kumar', 'Altaf Hussain', 'Anoop Kumar verma', 'Gaurav Kashyap', 'Jay Vardha',
+l1 = ['Abhishek kumar', 'Altaf Hussain', 'Anoop Kumar verma', 'Gaurav Kashya', 'Jay Vardha',
     'Kashish Pandey', 'Neha Gautam', 'Pratyaksh Yadav', 'Prem Mohan', 'Priya Singh',
     'Ranjeet Kumar', 'Sandeep Balmiki', 'Saumya', 'Shreya Singh', 'Sonam Pal']
 
@@ -125,8 +125,12 @@ elif option == "View All Pairs":
             if len(lines) > 1:
                 st.write("### Paired Records:")
                 for line in lines[1:]:
-                    date_, name1, status1, name2, status2 = line.strip().split(',')
-                    st.write(f"- **{date_}**: {name1} ({status1}) and {name2} ({status2})")
+                    parts = line.strip().split(',')
+                    if len(parts) == 5:
+                        date_, name1, status1, name2, status2 = parts
+                        st.write(f"- **{date_}**: {name1} ({status1}) and {name2} ({status2})")
+                    else:
+                        st.warning(f"Skipping invalid record: {line.strip()}")
             else:
                 st.info("No pairs found.")
     except FileNotFoundError:
